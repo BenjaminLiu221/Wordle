@@ -22,5 +22,6 @@ namespace Wordle
             wordleLibrary.Add(0, newWordle);
             return wordleLibrary;
         }
+        //add method to just simply adding new wordleword, determine current id and add one to it
     }
 }
