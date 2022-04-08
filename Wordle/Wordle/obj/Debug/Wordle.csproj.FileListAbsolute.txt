@@ -1,0 +1,8 @@
+C:\Users\benja\Documents\Projects\Wordle\Wordle\Wordle\bin\Debug\Wordle.exe.config
+C:\Users\benja\Documents\Projects\Wordle\Wordle\Wordle\bin\Debug\Wordle.exe
+C:\Users\benja\Documents\Projects\Wordle\Wordle\Wordle\bin\Debug\Wordle.pdb
+C:\Users\benja\Documents\Projects\Wordle\Wordle\Wordle\obj\Debug\Wordle.csproj.AssemblyReference.cache
+C:\Users\benja\Documents\Projects\Wordle\Wordle\Wordle\obj\Debug\Wordle.csproj.SuggestedBindingRedirects.cache
+C:\Users\benja\Documents\Projects\Wordle\Wordle\Wordle\obj\Debug\Wordle.csproj.CoreCompileInputs.cache
+C:\Users\benja\Documents\Projects\Wordle\Wordle\Wordle\obj\Debug\Wordle.exe
+C:\Users\benja\Documents\Projects\Wordle\Wordle\Wordle\obj\Debug\Wordle.pdb
