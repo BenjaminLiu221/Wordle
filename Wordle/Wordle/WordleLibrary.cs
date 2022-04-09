@@ -17,16 +17,24 @@ namespace Wordle
 
         public static List<string> wordleList = new List<string>
         {
-            "rhino",
-            "pizza",
-            "dizzy",
-            "quick",
-            "quack",
-            "froze",
-            "juice",
-            "amaze",
+            "crazy",
+            "chaff",
             "check",
             "chick",
+            "chock",
+            "chuck",
+            "chalk",
+            "craze",
+            "comfy",
+            "cabby",
+            "champ",
+            "cheek",
+            "choke",
+            "chump",
+            "chunk",
+            "chafe",
+            "chief",
+            "clack"
         };
 
         public static Dictionary<int, WordleClass> GetWordle()
