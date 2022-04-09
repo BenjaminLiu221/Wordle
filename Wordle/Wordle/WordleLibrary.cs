@@ -18,20 +18,28 @@ namespace Wordle
         public static List<string> wordleList = new List<string>
         {
             "rhino",
-            "block"
+            "pizza",
+            "dizzy",
+            "quick",
+            "quack",
+            "froze",
+            "juice",
+            "amaze",
+            "check",
+            "chick",
         };
 
         public static Dictionary<int, WordleClass> GetWordle()
         {
-            var wordleLibrary = new Dictionary<int, WordleClass>();
+            var wordleDictionary = new Dictionary<int, WordleClass>();
             int indexNumber = 0;
 
             foreach (var item in wordleList)
             {
-                wordleLibrary.Add(indexNumber, new WordleClass("rhino"));
+                wordleDictionary.Add(indexNumber, new WordleClass(item));
                 indexNumber++;
             }
-            return wordleLibrary;
+            return wordleDictionary;
         }
     }
 }

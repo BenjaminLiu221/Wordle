@@ -12,10 +12,10 @@ namespace Wordle
         {
             Random randomizer = new Random();
 
-            int randomNumber = (int)randomizer.Next(0, 1);
+            int randomNumber = (int)randomizer.Next(0, 10);
 
             var wordleLibrary = WordleClass.GetWordle();
-            string wordleWord = wordleLibrary[0].Word;
+            string wordleWord = wordleLibrary[randomNumber].Word;
             Console.WriteLine(wordleWord);
         }
     }
