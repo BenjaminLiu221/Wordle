@@ -6,22 +6,32 @@ using System.Threading.Tasks;
 
 namespace Wordle
 {
-    public class WordleWord
+    public class WordleClass
     {
         public string Word { get; set; }
 
-        public WordleWord(string wordleWord)
+        public WordleClass(string wordleWord)
         {
             Word = wordleWord;
         }
 
-        public static Dictionary<int, WordleWord> GetWordle()
+        public static List<string> wordleList = new List<string>
         {
-            var wordleLibrary = new Dictionary<int, WordleWord>();
-            var newWordle = new WordleWord("rhino");
-            wordleLibrary.Add(0, newWordle);
+            "rhino",
+            "block"
+        };
+
+        public static Dictionary<int, WordleClass> GetWordle()
+        {
+            var wordleLibrary = new Dictionary<int, WordleClass>();
+            int indexNumber = 0;
+
+            foreach (var item in wordleList)
+            {
+                wordleLibrary.Add(indexNumber, new WordleClass("rhino"));
+                indexNumber++;
+            }
             return wordleLibrary;
         }
-        //add method to just simply adding new wordleword, determine current id and add one to it
     }
 }

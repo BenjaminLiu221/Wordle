@@ -14,7 +14,7 @@ namespace Wordle
 
             int randomNumber = (int)randomizer.Next(0, 1);
 
-            var wordleLibrary = WordleWord.GetWordle();
+            var wordleLibrary = WordleClass.GetWordle();
             string wordleWord = wordleLibrary[0].Word;
             Console.WriteLine(wordleWord);
         }
