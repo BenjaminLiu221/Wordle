@@ -78,6 +78,8 @@ namespace Wordle
 
                 }
 
+                 
+
                 if (userInputValidationPassed)
                 {
                     if (userGuess == wordleWord)
@@ -108,6 +110,8 @@ namespace Wordle
                         outputCharFiveDisplay = BuildOutputDisplay(wordleWordCharFive, userGuessCharFive, outputDisplayCharFiveToString, outputCharFiveDisplay);
                     }
                 }
+
+                //need logic to return true if userGuess is a five letter word in the wordleLibrary, only track progress of wordle letters if true
 
                 if (guessAttemptsRemaining == 0)
                 {
