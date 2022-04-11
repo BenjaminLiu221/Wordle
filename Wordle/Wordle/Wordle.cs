@@ -51,7 +51,7 @@ namespace Wordle
                         Console.WriteLine("That is not a valid guess. Please enter only three letters and then press Enter.");
                         Console.WriteLine("");
                     }
-                    if ((userGuessLength == 5) && (userInputValidationPassed))
+                    else 
                     {
                         for (int i = 0; i < userGuess.Length; i++)
                         {
@@ -76,9 +76,7 @@ namespace Wordle
                         }
                     }
 
-                }
-
-                 
+                }                
 
                 if (userInputValidationPassed)
                 {
@@ -118,7 +116,10 @@ namespace Wordle
                     Console.WriteLine("You have 0 guesses remaining. Thank you for playing. Good Bye!");
                     return;
                 }
-                Console.WriteLine($"Guess Attempt(s) Remaining: {guessAttemptsRemaining}");
+                else
+                {
+                    Console.WriteLine($"Guess Attempt(s) Remaining: {guessAttemptsRemaining}");
+                }
 
                 Console.WriteLine($"Progress: {outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}");
                 Console.WriteLine("");
