@@ -35,7 +35,6 @@ namespace Wordle
             "chafe",
             "chief",
             "clack",
-            ""
         };
 
         public static Dictionary<int, WordleClass> GetWordle()

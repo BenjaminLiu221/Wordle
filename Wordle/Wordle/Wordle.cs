@@ -48,7 +48,7 @@ namespace Wordle
                     if (userGuessLength != 5)
                     {
                         userInputValidationPassed = false;
-                        Console.WriteLine("That is not a valid guess. Please enter only three letters and then press Enter.");
+                        Console.WriteLine("That is not a valid guess. Please enter a five letter word and then press Enter.");
                         Console.WriteLine("");
                     }
                     else 
@@ -71,13 +71,14 @@ namespace Wordle
                         if (containInvalidCharCount > 0)
                         {
                             userInputValidationPassed = false;
-                            Console.WriteLine("That is not a valid guess. Your input contains a number(s) or special character(s). Please enter three letters and then press Enter.");
+                            Console.WriteLine("That is not a valid guess. Your input contains a number(s) or special character(s). Please enter a five letter word and then press Enter.");
                             Console.WriteLine("");
                         }
                     }
 
-                }                
+                }
 
+                //need logic to return true if userGuess is a five letter word in the wordleLibrary, only track progress of wordle letters if true
                 if (userInputValidationPassed)
                 {
                     var userGuessCharOne = userGuess.ToCharArray()[0];
@@ -92,31 +93,37 @@ namespace Wordle
                     var outputDisplayCharFourToString = "_";
                     var outputDisplayCharFiveToString = "_";
 
-                    if (userGuess != wordleWord)
+                    if (WordleClass.wordleList.Contains(userGuess))
                     {
-                        guessAttemptsRemaining--;
 
-                        outputCharOneDisplay = BuildOutputDisplay(wordleWordCharOne, userGuessCharOne, outputDisplayCharOneToString, outputCharOneDisplay);
-                        outputCharTwoDisplay = BuildOutputDisplay(wordleWordCharTwo, userGuessCharTwo, outputDisplayCharTwoToString, outputCharTwoDisplay);
-                        outputCharThreeDisplay = BuildOutputDisplay(wordleWordCharThree, userGuessCharThree, outputDisplayCharThreeToString, outputCharThreeDisplay);
-                        outputCharFourDisplay = BuildOutputDisplay(wordleWordCharFour, userGuessCharFour, outputDisplayCharFourToString, outputCharFourDisplay);
-                        outputCharFiveDisplay = BuildOutputDisplay(wordleWordCharFive, userGuessCharFive, outputDisplayCharFiveToString, outputCharFiveDisplay);
+                        if (userGuess != wordleWord)
+                        {
+                            guessAttemptsRemaining--;
+
+                            outputCharOneDisplay = BuildOutputDisplay(wordleWordCharOne, userGuessCharOne, outputDisplayCharOneToString, outputCharOneDisplay);
+                            outputCharTwoDisplay = BuildOutputDisplay(wordleWordCharTwo, userGuessCharTwo, outputDisplayCharTwoToString, outputCharTwoDisplay);
+                            outputCharThreeDisplay = BuildOutputDisplay(wordleWordCharThree, userGuessCharThree, outputDisplayCharThreeToString, outputCharThreeDisplay);
+                            outputCharFourDisplay = BuildOutputDisplay(wordleWordCharFour, userGuessCharFour, outputDisplayCharFourToString, outputCharFourDisplay);
+                            outputCharFiveDisplay = BuildOutputDisplay(wordleWordCharFive, userGuessCharFive, outputDisplayCharFiveToString, outputCharFiveDisplay);
+                        }
+                        else
+                        {
+                            outputCharOneDisplay = BuildOutputDisplay(wordleWordCharOne, userGuessCharOne, outputDisplayCharOneToString, outputCharOneDisplay);
+                            outputCharTwoDisplay = BuildOutputDisplay(wordleWordCharTwo, userGuessCharTwo, outputDisplayCharTwoToString, outputCharTwoDisplay);
+                            outputCharThreeDisplay = BuildOutputDisplay(wordleWordCharThree, userGuessCharThree, outputDisplayCharThreeToString, outputCharThreeDisplay);
+                            outputCharFourDisplay = BuildOutputDisplay(wordleWordCharFour, userGuessCharFour, outputDisplayCharFourToString, outputCharFourDisplay);
+                            outputCharFiveDisplay = BuildOutputDisplay(wordleWordCharFive, userGuessCharFive, outputDisplayCharFiveToString, outputCharFiveDisplay);
+
+                            Console.WriteLine($"Progress: {outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}");
+                            Console.WriteLine("You have guessed the Durrrdle. Thank you for playing!");
+                            return;
+                        }
                     }
                     else
                     {
-                        outputCharOneDisplay = BuildOutputDisplay(wordleWordCharOne, userGuessCharOne, outputDisplayCharOneToString, outputCharOneDisplay);
-                        outputCharTwoDisplay = BuildOutputDisplay(wordleWordCharTwo, userGuessCharTwo, outputDisplayCharTwoToString, outputCharTwoDisplay);
-                        outputCharThreeDisplay = BuildOutputDisplay(wordleWordCharThree, userGuessCharThree, outputDisplayCharThreeToString, outputCharThreeDisplay);
-                        outputCharFourDisplay = BuildOutputDisplay(wordleWordCharFour, userGuessCharFour, outputDisplayCharFourToString, outputCharFourDisplay);
-                        outputCharFiveDisplay = BuildOutputDisplay(wordleWordCharFive, userGuessCharFive, outputDisplayCharFiveToString, outputCharFiveDisplay);
-
-                        Console.WriteLine($"Progress: {outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}");
-                        Console.WriteLine("You have guessed the Durrrdle. Thank you for playing!");
-                        return;
+                        Console.WriteLine("This word is not in the word list. Please enter a five letter word and then press Enter.");
                     }
                 }
-
-                //need logic to return true if userGuess is a five letter word in the wordleLibrary, only track progress of wordle letters if true
 
                 if (guessAttemptsRemaining == 0)
                 {
