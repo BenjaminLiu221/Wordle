@@ -43,7 +43,12 @@ namespace Wordle
 
                 bool userInputValidationPassed = true;
 
-                if (userInputValidationPassed)
+                if (userGuess.Equals("quit"))
+                {
+                    return;
+                }
+
+                else
                 {
                     if (userGuessLength != 5)
                     {
