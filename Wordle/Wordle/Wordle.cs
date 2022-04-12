@@ -146,11 +146,11 @@ namespace Wordle
         }
         public string BuildOutputDisplay(char durrrdleWordChar, char userGuessChar, string outputDisplayChar, string finalOutputDisplayChar)
         {
-            if (durrrdleWordChar == userGuessChar)
+            if ((outputDisplayChar == "_") && (durrrdleWordChar == userGuessChar))
             {
-                outputDisplayChar = userGuessChar.ToString();
+                finalOutputDisplayChar = userGuessChar.ToString();
             }
-            if (outputDisplayChar != "_")
+            else
             {
                 finalOutputDisplayChar = outputDisplayChar;
             }
