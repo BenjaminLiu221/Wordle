@@ -80,32 +80,39 @@ namespace Wordle
 
                 if (userInputValidationPassed)
                 {
-                    if (userGuess == wordleWord)
-                    {
-                        Console.WriteLine("You have guessed the Durrrdle. Thank you for playing!");
-                        return;
-                    }
-                    else
+                    var userGuessCharOne = userGuess.ToCharArray()[0];
+                    var userGuessCharTwo = userGuess.ToCharArray()[1];
+                    var userGuessCharThree = userGuess.ToCharArray()[2];
+                    var userGuessCharFour = userGuess.ToCharArray()[3];
+                    var userGuessCharFive = userGuess.ToCharArray()[4];
+
+                    var outputDisplayCharOneToString = "_";
+                    var outputDisplayCharTwoToString = "_";
+                    var outputDisplayCharThreeToString = "_";
+                    var outputDisplayCharFourToString = "_";
+                    var outputDisplayCharFiveToString = "_";
+
+                    if (userGuess != wordleWord)
                     {
                         guessAttemptsRemaining--;
-
-                        var userGuessCharOne = userGuess.ToCharArray()[0];
-                        var userGuessCharTwo = userGuess.ToCharArray()[1];
-                        var userGuessCharThree = userGuess.ToCharArray()[2];
-                        var userGuessCharFour = userGuess.ToCharArray()[3];
-                        var userGuessCharFive = userGuess.ToCharArray()[4];
-
-                        var outputDisplayCharOneToString = "_";
-                        var outputDisplayCharTwoToString = "_";
-                        var outputDisplayCharThreeToString = "_";
-                        var outputDisplayCharFourToString = "_";
-                        var outputDisplayCharFiveToString = "_";
 
                         outputCharOneDisplay = BuildOutputDisplay(wordleWordCharOne, userGuessCharOne, outputDisplayCharOneToString, outputCharOneDisplay);
                         outputCharTwoDisplay = BuildOutputDisplay(wordleWordCharTwo, userGuessCharTwo, outputDisplayCharTwoToString, outputCharTwoDisplay);
                         outputCharThreeDisplay = BuildOutputDisplay(wordleWordCharThree, userGuessCharThree, outputDisplayCharThreeToString, outputCharThreeDisplay);
                         outputCharFourDisplay = BuildOutputDisplay(wordleWordCharFour, userGuessCharFour, outputDisplayCharFourToString, outputCharFourDisplay);
                         outputCharFiveDisplay = BuildOutputDisplay(wordleWordCharFive, userGuessCharFive, outputDisplayCharFiveToString, outputCharFiveDisplay);
+                    }
+                    else
+                    {
+                        outputCharOneDisplay = BuildOutputDisplay(wordleWordCharOne, userGuessCharOne, outputDisplayCharOneToString, outputCharOneDisplay);
+                        outputCharTwoDisplay = BuildOutputDisplay(wordleWordCharTwo, userGuessCharTwo, outputDisplayCharTwoToString, outputCharTwoDisplay);
+                        outputCharThreeDisplay = BuildOutputDisplay(wordleWordCharThree, userGuessCharThree, outputDisplayCharThreeToString, outputCharThreeDisplay);
+                        outputCharFourDisplay = BuildOutputDisplay(wordleWordCharFour, userGuessCharFour, outputDisplayCharFourToString, outputCharFourDisplay);
+                        outputCharFiveDisplay = BuildOutputDisplay(wordleWordCharFive, userGuessCharFive, outputDisplayCharFiveToString, outputCharFiveDisplay);
+
+                        Console.WriteLine($"Progress: {outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}");
+                        Console.WriteLine("You have guessed the Durrrdle. Thank you for playing!");
+                        return;
                     }
                 }
 
@@ -119,10 +126,9 @@ namespace Wordle
                 else
                 {
                     Console.WriteLine($"Guess Attempt(s) Remaining: {guessAttemptsRemaining}");
+                    Console.WriteLine($"Progress: {outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}");
+                    Console.WriteLine("");
                 }
-
-                Console.WriteLine($"Progress: {outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}");
-                Console.WriteLine("");
 
             } while (guessAgain);
         }
