@@ -34,7 +34,9 @@ namespace Wordle
             string letterBoardRow3 = "Z X C V B N M";
 
             Console.WriteLine("");
-            Console.WriteLine(letterBoardRow1);
+            Console.WriteLine($"Letter Board: {letterBoardRow1}");
+            Console.WriteLine($" {letterBoardRow2, 31}");
+            Console.WriteLine($" {letterBoardRow3, 28}");
             Console.WriteLine("");
             Console.WriteLine("Enter 'Quit' to exit the game.");
             Console.WriteLine("");
