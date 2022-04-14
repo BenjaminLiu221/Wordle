@@ -10,6 +10,7 @@ Game ends when user guesses the Wordle or if guess attempts remaining reaches 0.
 - Accepts userInputs up to five valid guesses
 - Validates userInputs through character exception handling
 - Tracks letters of Wordle only if userInput is a word in word list
+- Dynamic Letter Board
 
 ## Tools
 

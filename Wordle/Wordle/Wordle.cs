@@ -43,7 +43,7 @@ namespace Wordle
 
             bool guessAgain = true;
 
-            int guessAttemptsRemaining = 3;
+            int guessAttemptsRemaining = 5;
 
             do
             {
