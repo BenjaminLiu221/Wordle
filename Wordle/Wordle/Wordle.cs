@@ -15,7 +15,7 @@ namespace Wordle
             int randomNumber = (int)randomizer.Next(0, 10);
 
             var wordleWord = WordleClass.GetWordle()[randomNumber].Word;
-            Console.WriteLine($"Wordle is:{wordleWord}");
+            //Console.WriteLine($"Wordle is:{wordleWord}");
 
             var wordleWordCharOne = wordleWord.ToCharArray()[0];
             var wordleWordCharTwo = wordleWord.ToCharArray()[1];
@@ -29,12 +29,21 @@ namespace Wordle
             string outputCharFourDisplay = "_";
             string outputCharFiveDisplay = "_";
 
+            string letterBoardRow1 = "Q W E R T Y";
+
+            Console.WriteLine("");
+            Console.WriteLine(letterBoardRow1);
+            Console.WriteLine("");
+            Console.WriteLine("Enter 'Quit' to exit the game.");
+            Console.WriteLine("");
+
             bool guessAgain = true;
 
             int guessAttemptsRemaining = 3;
 
             do
             {
+                Console.Write("Guess here: ");
                 string userGuess = Console.ReadLine().ToLower();
 
                 int userGuessLength = userGuess.Length;
@@ -53,7 +62,7 @@ namespace Wordle
                     if (userGuessLength != 5)
                     {
                         userInputValidationPassed = false;
-                        Console.WriteLine("That is not a valid guess. Please enter a five letter word and then press Enter.");
+                        Console.WriteLine("\"That is not a valid guess. Please enter a five letter word and then press Enter.\"");
                         Console.WriteLine("");
                     }
                     else 
@@ -76,14 +85,13 @@ namespace Wordle
                         if (containInvalidCharCount > 0)
                         {
                             userInputValidationPassed = false;
-                            Console.WriteLine("That is not a valid guess. Your input contains a number(s) or special character(s). Please enter a five letter word and then press Enter.");
+                            Console.WriteLine("\"That is not a valid guess. Your input contains a number(s) or special character(s). Please enter a five letter word and then press Enter.\"");
                             Console.WriteLine("");
                         }
                     }
 
                 }
 
-                //need logic to return true if userGuess is a five letter word in the wordleLibrary, only track progress of wordle letters if true
                 if (userInputValidationPassed)
                 {
                     var userGuessCharOne = userGuess.ToCharArray()[0];
@@ -120,19 +128,19 @@ namespace Wordle
                             outputCharFiveDisplay = BuildOutputDisplay(wordleWordCharFive, userGuessCharFive, outputDisplayCharFiveToString, outputCharFiveDisplay);
 
                             Console.WriteLine($"Progress: {outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}");
-                            Console.WriteLine("You have guessed the Durrrdle. Thank you for playing!");
+                            Console.WriteLine("\"You have guessed the Durrrdle. Thank you for playing!\"");
                             return;
                         }
                     }
                     else
                     {
-                        Console.WriteLine("This word is not in the word list. Please enter a five letter word and then press Enter.");
+                        Console.WriteLine("\"This word is not in the word list. Please enter a five letter word and then press Enter.\"");
                     }
                 }
 
                 if (guessAttemptsRemaining == 0)
                 {
-                    Console.WriteLine("You have 0 guesses remaining. Thank you for playing. Good Bye!");
+                    Console.WriteLine("\"You have 0 guesses remaining. Thank you for playing. Good Bye!\"");
                     return;
                 }
                 else
