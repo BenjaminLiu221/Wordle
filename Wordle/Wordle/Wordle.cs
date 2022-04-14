@@ -29,7 +29,9 @@ namespace Wordle
             string outputCharFourDisplay = "_";
             string outputCharFiveDisplay = "_";
 
-            string letterBoardRow1 = "Q W E R T Y";
+            string letterBoardRow1 = "Q W E R T Y U I O P";
+            string letterBoardRow2 = "A S D F G H J K L";
+            string letterBoardRow3 = "Z X C V B N M";
 
             Console.WriteLine("");
             Console.WriteLine(letterBoardRow1);
@@ -118,6 +120,10 @@ namespace Wordle
                             outputCharThreeDisplay = BuildOutputDisplay(wordleWordCharThree, userGuessCharThree, outputDisplayCharThreeToString, outputCharThreeDisplay);
                             outputCharFourDisplay = BuildOutputDisplay(wordleWordCharFour, userGuessCharFour, outputDisplayCharFourToString, outputCharFourDisplay);
                             outputCharFiveDisplay = BuildOutputDisplay(wordleWordCharFive, userGuessCharFive, outputDisplayCharFiveToString, outputCharFiveDisplay);
+
+                            letterBoardRow1 = letterBoard(letterBoardRow1, outputCharOneDisplay, outputCharTwoDisplay, outputCharThreeDisplay, outputCharFourDisplay, outputCharFiveDisplay);
+                            letterBoardRow2 = letterBoard(letterBoardRow2, outputCharOneDisplay, outputCharTwoDisplay, outputCharThreeDisplay, outputCharFourDisplay, outputCharFiveDisplay);
+                            letterBoardRow3 = letterBoard(letterBoardRow3, outputCharOneDisplay, outputCharTwoDisplay, outputCharThreeDisplay, outputCharFourDisplay, outputCharFiveDisplay);
                         }
                         else
                         {
@@ -147,6 +153,9 @@ namespace Wordle
                 {
                     Console.WriteLine($"Guess Attempt(s) Remaining: {guessAttemptsRemaining}");
                     Console.WriteLine($"Progress: {outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}");
+                    Console.WriteLine($"Letter Board: {letterBoardRow1}");
+                    Console.WriteLine($" {letterBoardRow2, 31}");
+                    Console.WriteLine($" {letterBoardRow3, 28}");
                     Console.WriteLine("");
                 }
 
@@ -163,6 +172,14 @@ namespace Wordle
                 finalOutputDisplayChar = outputDisplayChar;
             }
             return finalOutputDisplayChar;
+        }
+
+        public string letterBoard(string letterBoard, string outputCharOneDisplay, string outputCharTwoDisplay, string outputCharThreeDisplay, string outputCharFourDisplay, string outputCharFiveDisplay)
+        {
+            letterBoard = letterBoard.ToLower();
+            letterBoard = letterBoard.Replace(System.Convert.ToChar(outputCharOneDisplay), '_').Replace(System.Convert.ToChar(outputCharTwoDisplay), '_').Replace(System.Convert.ToChar(outputCharThreeDisplay), '_').Replace(System.Convert.ToChar(outputCharFourDisplay), '_').Replace(System.Convert.ToChar(outputCharFiveDisplay), '_');
+            letterBoard = letterBoard.ToUpper();
+            return letterBoard;
         }
     }
 }
