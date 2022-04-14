@@ -58,7 +58,6 @@ namespace Wordle
                 {
                     return;
                 }
-
                 else
                 {
                     if (userGuessLength != 5)
@@ -91,7 +90,6 @@ namespace Wordle
                             Console.WriteLine("");
                         }
                     }
-
                 }
 
                 if (userInputValidationPassed)
@@ -158,7 +156,6 @@ namespace Wordle
                     Console.WriteLine($" {letterBoardRow3, 28}");
                     Console.WriteLine("");
                 }
-
             } while (guessAgain);
         }
         public string BuildOutputDisplay(char durrrdleWordChar, char userGuessChar, string outputDisplayChar, string finalOutputDisplayChar)
