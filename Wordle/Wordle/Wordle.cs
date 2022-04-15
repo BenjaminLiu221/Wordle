@@ -164,13 +164,32 @@ namespace Wordle
 
                 if (guessAttemptsRemaining == 0)
                 {
+                    for (int i = 0; i < wordleBoard.Count; i++)
+                    {
+                        if (wordleBoard[i].Equals("_ _ _ _ _"))
+                        {
+                            wordleBoard[i] = $"{outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}";
+                            break;
+                        }
+                    }
+
+                    foreach (string row in wordleBoard)
+                    {
+                        Console.WriteLine($"{row,28}");
+                    }
+
+                    Console.WriteLine("");
+                    Console.WriteLine($"Letter Board: {letterBoardRow1}");
+                    Console.WriteLine($" {letterBoardRow2,31}");
+                    Console.WriteLine($" {letterBoardRow3,28}");
+                    Console.WriteLine("");
                     Console.WriteLine("\"You have 0 guesses remaining. Thank you for playing. Good Bye!\"");
                     return;
                 }
                 else
                 {
                     Console.WriteLine($"Guess Attempt(s) Remaining: {guessAttemptsRemaining}");
-                    for (int i = 0; i < 2; i++)
+                    for (int i = 0; i < wordleBoard.Count; i++)
                     {
                         if (wordleBoard[i].Equals("_ _ _ _ _"))
                         {
