@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Wordle
 {
@@ -15,34 +16,15 @@ namespace Wordle
             Word = wordleWord;
         }
 
-        public static List<string> wordleList = new List<string>
-        {
-            "crazy",
-            "chaff",
-            "check",
-            "chick",
-            "chock",
-            "chuck",
-            "chalk",
-            "craze",
-            "comfy",
-            "cabby",
-            "champ",
-            "cheek",
-            "choke",
-            "chump",
-            "chunk",
-            "chafe",
-            "chief",
-            "clack",
-        };
+        private const string wordle_Library_File_Path = @"C:\Users\benja\Documents\Projects\Wordle\Wordle\Wordle\WordleLibrary.txt";
+        public static List<string> wordleList = File.ReadAllLines(wordle_Library_File_Path).ToList();
 
         public static Dictionary<int, WordleClass> GetWordle()
         {
             var wordleDictionary = new Dictionary<int, WordleClass>();
             int indexNumber = 0;
 
-            foreach (var item in wordleList)
+            foreach (string item in wordleList)
             {
                 wordleDictionary.Add(indexNumber, new WordleClass(item));
                 indexNumber++;
