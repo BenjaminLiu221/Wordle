@@ -16,7 +16,7 @@ namespace Wordle
             int randomNumber = (int)randomizer.Next(0, 10);
 
             var wordleWord = WordleClass.GetWordle()[randomNumber].Word;
-            Console.WriteLine($"Wordle is:{wordleWord}");
+            //Console.WriteLine($"Wordle is:{wordleWord}");
 
             var wordleWordCharOne = wordleWord.ToCharArray()[0];
             var wordleWordCharTwo = wordleWord.ToCharArray()[1];
