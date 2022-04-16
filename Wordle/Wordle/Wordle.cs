@@ -16,7 +16,7 @@ namespace Wordle
             int randomNumber = (int)randomizer.Next(0, 10);
 
             var wordleWord = WordleClass.GetWordle()[randomNumber].Word;
-            //Console.WriteLine($"Wordle is:{wordleWord}");
+            Console.WriteLine($"Wordle is:{wordleWord}");
 
             var wordleWordCharOne = wordleWord.ToCharArray()[0];
             var wordleWordCharTwo = wordleWord.ToCharArray()[1];
@@ -51,6 +51,7 @@ namespace Wordle
             bool guessAgain = true;
 
             int guessAttemptsRemaining = 6;
+            int useWordleBoardRow = 0;
 
             do
             {
@@ -164,14 +165,7 @@ namespace Wordle
 
                 if (guessAttemptsRemaining == 0)
                 {
-                    for (int i = 0; i < wordleBoard.Count; i++)
-                    {
-                        if (wordleBoard[i].Equals("_ _ _ _ _"))
-                        {
-                            wordleBoard[i] = $"{outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}";
-                            break;
-                        }
-                    }
+                    wordleBoard[useWordleBoardRow] = $"{outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}";
 
                     foreach (string row in wordleBoard)
                     {
@@ -189,14 +183,8 @@ namespace Wordle
                 else
                 {
                     Console.WriteLine($"Guess Attempt(s) Remaining: {guessAttemptsRemaining}");
-                    for (int i = 0; i < wordleBoard.Count; i++)
-                    {
-                        if (wordleBoard[i].Equals("_ _ _ _ _"))
-                        {
-                            wordleBoard[i] = $"{outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}";
-                            break;
-                        }
-                    }
+                    wordleBoard[useWordleBoardRow] = $"{outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}";
+                    useWordleBoardRow++;
 
                     foreach (string row in wordleBoard)
                     {
