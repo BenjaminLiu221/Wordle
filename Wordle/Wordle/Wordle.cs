@@ -16,7 +16,7 @@ namespace Wordle
             int randomNumber = (int)randomizer.Next(0, 10);
 
             var wordleWord = WordleClass.GetWordle()[randomNumber].Word;
-            //Console.WriteLine($"Wordle is:{wordleWord}");
+            Console.WriteLine($"Wordle is:{wordleWord}");
 
             var wordleWordCharOne = wordleWord.ToCharArray()[0];
             var wordleWordCharTwo = wordleWord.ToCharArray()[1];
@@ -153,6 +153,19 @@ namespace Wordle
                             outputCharFourDisplay = BuildOutputDisplay(wordleWordCharFour, userGuessCharFour, outputDisplayCharFourToString, outputCharFourDisplay);
                             outputCharFiveDisplay = BuildOutputDisplay(wordleWordCharFive, userGuessCharFive, outputDisplayCharFiveToString, outputCharFiveDisplay);
 
+                            wordleBoard[useWordleBoardRow] = $"{outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}";
+                            useWordleBoardRow++;
+
+                            foreach (string row in wordleBoard)
+                            {
+                                Console.WriteLine($"{row,28}");
+                            }
+
+                            Console.WriteLine("");
+                            Console.WriteLine($"Letter Board: {letterBoardRow1}");
+                            Console.WriteLine($" {letterBoardRow2,31}");
+                            Console.WriteLine($" {letterBoardRow3,28}");
+                            Console.WriteLine("");
                             Console.WriteLine("\"You have guessed the Wordle. Thank you for playing!\"");
                             return;
                         }
@@ -182,20 +195,39 @@ namespace Wordle
                 }
                 else
                 {
-                    Console.WriteLine($"Guess Attempt(s) Remaining: {guessAttemptsRemaining}");
-                    wordleBoard[useWordleBoardRow] = $"{outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}";
-                    useWordleBoardRow++;
-
-                    foreach (string row in wordleBoard)
+                    if (userInputValidationPassed)
                     {
-                        Console.WriteLine($"{row, 28}");
-                    }
+                        Console.WriteLine($"Guess Attempt(s) Remaining: {guessAttemptsRemaining}");
+                        wordleBoard[useWordleBoardRow] = $"{outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}";
+                        useWordleBoardRow++;
 
-                    Console.WriteLine("");
-                    Console.WriteLine($"Letter Board: {letterBoardRow1}");
-                    Console.WriteLine($" {letterBoardRow2,31}");
-                    Console.WriteLine($" {letterBoardRow3,28}");
-                    Console.WriteLine("");
+                        foreach (string row in wordleBoard)
+                        {
+                            Console.WriteLine($"{row,28}");
+                        }
+
+                        Console.WriteLine("");
+                        Console.WriteLine($"Letter Board: {letterBoardRow1}");
+                        Console.WriteLine($" {letterBoardRow2,31}");
+                        Console.WriteLine($" {letterBoardRow3,28}");
+                        Console.WriteLine("");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Guess Attempt(s) Remaining: {guessAttemptsRemaining}");
+                        //wordleBoard[useWordleBoardRow] = $"{outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}";
+
+                        foreach (string row in wordleBoard)
+                        {
+                            Console.WriteLine($"{row,28}");
+                        }
+
+                        Console.WriteLine("");
+                        Console.WriteLine($"Letter Board: {letterBoardRow1}");
+                        Console.WriteLine($" {letterBoardRow2,31}");
+                        Console.WriteLine($" {letterBoardRow3,28}");
+                        Console.WriteLine("");
+                    }
                 }
             } while (guessAgain);
         }
