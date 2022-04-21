@@ -9,11 +9,14 @@ Game ends when user guesses the Wordle, quits the game, or runs out of guess att
 
 - Accepts userInputs up to six valid guesses
 - Validates userInputs through character exception handling
-- Tracks letters of Wordle only if userInput is a word in word list
-- Dynamic Letter Board that removes incorrect letters
+- Tracks progress of Wordle through color scheme of letters if userInput is a word in the word list
+- Letter Board updates dynamically through color scheme of letters
 
-## Tools
+## To Get Started
 
-- Object Oriented Programming
-- Regular Expression
-- Recursive Logic
+- IDE that allows for multiple items to each project
+   - ie. Visual Studio 2022
+- WordleList
+   - Create a text file that has only five letter words each line
+   - Update string **wordle_Library_File_Path** to "directory\*textfilename.txt*"
+- Enjoy!
