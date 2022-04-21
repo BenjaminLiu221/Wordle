@@ -16,7 +16,7 @@ namespace Wordle
             int randomNumber = (int)randomizer.Next(0, 10);
 
             var wordleWord = WordleClass.GetWordle()[randomNumber].Word;
-            Console.WriteLine($"Wordle is:{wordleWord}");
+            //Console.WriteLine($"Wordle is:{wordleWord}");
 
             var wordleWordCharOne = wordleWord.ToCharArray()[0];
             var wordleWordCharTwo = wordleWord.ToCharArray()[1];
@@ -63,6 +63,8 @@ namespace Wordle
                 int containInvalidCharCount = 0;
 
                 bool userInputValidationPassed = true;
+
+                bool wordleListValidationPassed = WordleClass.wordleList.Contains(userGuess);
 
                 if (userGuess.Equals("quit"))
                 {
@@ -122,7 +124,7 @@ namespace Wordle
                     string incorrectLetterBoardCharFour = "";
                     string incorrectLetterBoardCharFive = "";
 
-                    if (WordleClass.wordleList.Contains(userGuess))
+                    if (wordleListValidationPassed)
                     {
 
                         if (userGuess != wordleWord)
@@ -190,12 +192,12 @@ namespace Wordle
                     Console.WriteLine($" {letterBoardRow2,31}");
                     Console.WriteLine($" {letterBoardRow3,28}");
                     Console.WriteLine("");
-                    Console.WriteLine("\"You have 0 guesses remaining. Thank you for playing. Good Bye!\"");
+                    Console.WriteLine($"\"You have 0 guesses remaining. The wordle was \"{wordleWord.ToUpper()}\".Thank you for playing. Good Bye!\"");
                     return;
                 }
                 else
                 {
-                    if (userInputValidationPassed)
+                    if ((userInputValidationPassed) && (wordleListValidationPassed))
                     {
                         Console.WriteLine($"Guess Attempt(s) Remaining: {guessAttemptsRemaining}");
                         wordleBoard[useWordleBoardRow] = $"{outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}";
