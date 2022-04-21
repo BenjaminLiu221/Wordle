@@ -18,18 +18,6 @@ namespace Wordle
             var wordleWord = WordleClass.GetWordle()[randomNumber].Word;
             Console.WriteLine($"Wordle is:{wordleWord}");
 
-            var wordleWordCharOne = wordleWord.ToCharArray()[0];
-            var wordleWordCharTwo = wordleWord.ToCharArray()[1];
-            var wordleWordCharThree = wordleWord.ToCharArray()[2];
-            var wordleWordCharFour = wordleWord.ToCharArray()[3];
-            var wordleWordCharFive = wordleWord.ToCharArray()[4];
-
-            string outputCharOneDisplay = "_";
-            string outputCharTwoDisplay = "_";
-            string outputCharThreeDisplay = "_";
-            string outputCharFourDisplay = "_";
-            string outputCharFiveDisplay = "_";
-
             string letterBoardRow1 = "Q W E R T Y U I O P";
             string letterBoardRow2 = "A S D F G H J K L";
             string letterBoardRow3 = "Z X C V B N M";
@@ -108,24 +96,6 @@ namespace Wordle
 
                 if (userInputValidationPassed)
                 {
-                    var userGuessCharOne = userGuess.ToCharArray()[0];
-                    var userGuessCharTwo = userGuess.ToCharArray()[1];
-                    var userGuessCharThree = userGuess.ToCharArray()[2];
-                    var userGuessCharFour = userGuess.ToCharArray()[3];
-                    var userGuessCharFive = userGuess.ToCharArray()[4];
-
-                    var outputDisplayCharOneToString = "_";
-                    var outputDisplayCharTwoToString = "_";
-                    var outputDisplayCharThreeToString = "_";
-                    var outputDisplayCharFourToString = "_";
-                    var outputDisplayCharFiveToString = "_";
-
-                    string incorrectLetterBoardCharOne = "";
-                    string incorrectLetterBoardCharTwo = "";
-                    string incorrectLetterBoardCharThree = "";
-                    string incorrectLetterBoardCharFour = "";
-                    string incorrectLetterBoardCharFive = "";
-
                     if (wordleListValidationPassed)
                     {
 
@@ -133,47 +103,11 @@ namespace Wordle
                         {
                             guessAttemptsRemaining--;
 
-                            //outputCharOneDisplay = BuildOutputDisplay(wordleWordCharOne, userGuessCharOne, outputDisplayCharOneToString, outputCharOneDisplay);
-                            //outputCharTwoDisplay = BuildOutputDisplay(wordleWordCharTwo, userGuessCharTwo, outputDisplayCharTwoToString, outputCharTwoDisplay);
-                            //outputCharThreeDisplay = BuildOutputDisplay(wordleWordCharThree, userGuessCharThree, outputDisplayCharThreeToString, outputCharThreeDisplay);
-                            //outputCharFourDisplay = BuildOutputDisplay(wordleWordCharFour, userGuessCharFour, outputDisplayCharFourToString, outputCharFourDisplay);
-                            //outputCharFiveDisplay = BuildOutputDisplay(wordleWordCharFive, userGuessCharFive, outputDisplayCharFiveToString, outputCharFiveDisplay);
-
                             wordleBoard[useWordleBoardRow] = userGuess;
                             useWordleBoardRow++;
-
-                            //incorrectLetterBoardCharOne = letterBoardChar(incorrectLetterBoardCharOne, wordleWordCharOne, userGuessCharOne);
-                            //incorrectLetterBoardCharTwo = letterBoardChar(incorrectLetterBoardCharTwo, wordleWordCharTwo, userGuessCharTwo);
-                            //incorrectLetterBoardCharThree = letterBoardChar(incorrectLetterBoardCharThree, wordleWordCharThree, userGuessCharThree);
-                            //incorrectLetterBoardCharFour = letterBoardChar(incorrectLetterBoardCharFour, wordleWordCharFour, userGuessCharFour);
-                            //incorrectLetterBoardCharFive = letterBoardChar(incorrectLetterBoardCharFive, wordleWordCharFive, userGuessCharFive);
-
-                            //letterBoardRow1 = letterBoard(letterBoardRow1, incorrectLetterBoardCharOne, incorrectLetterBoardCharTwo, incorrectLetterBoardCharThree, incorrectLetterBoardCharFour, incorrectLetterBoardCharFive);
-                            //letterBoardRow2 = letterBoard(letterBoardRow2, incorrectLetterBoardCharOne, incorrectLetterBoardCharTwo, incorrectLetterBoardCharThree, incorrectLetterBoardCharFour, incorrectLetterBoardCharFive);
-                            //letterBoardRow3 = letterBoard(letterBoardRow3, incorrectLetterBoardCharOne, incorrectLetterBoardCharTwo, incorrectLetterBoardCharThree, incorrectLetterBoardCharFour, incorrectLetterBoardCharFive);
                         }
                         else
                         {
-                            //outputCharOneDisplay = BuildOutputDisplay(wordleWordCharOne, userGuessCharOne, outputDisplayCharOneToString, outputCharOneDisplay);
-                            //outputCharTwoDisplay = BuildOutputDisplay(wordleWordCharTwo, userGuessCharTwo, outputDisplayCharTwoToString, outputCharTwoDisplay);
-                            //outputCharThreeDisplay = BuildOutputDisplay(wordleWordCharThree, userGuessCharThree, outputDisplayCharThreeToString, outputCharThreeDisplay);
-                            //outputCharFourDisplay = BuildOutputDisplay(wordleWordCharFour, userGuessCharFour, outputDisplayCharFourToString, outputCharFourDisplay);
-                            //outputCharFiveDisplay = BuildOutputDisplay(wordleWordCharFive, userGuessCharFive, outputDisplayCharFiveToString, outputCharFiveDisplay);
-
-                            //wordleBoard[useWordleBoardRow] = $"{outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}";
-                            //useWordleBoardRow++;
-
-                            //foreach (string row in wordleBoard)
-                            //{
-                            //    Console.WriteLine($"{row,28}");
-                            //}
-
-                            //Console.WriteLine("");
-                            //Console.WriteLine($"Letter Board: {letterBoardRow1}");
-                            //Console.WriteLine($" {letterBoardRow2,31}");
-                            //Console.WriteLine($" {letterBoardRow3,28}");
-                            //Console.WriteLine("");
-
                             wordleBoard[useWordleBoardRow] = userGuess;
                             useWordleBoardRow++;
 
@@ -202,18 +136,6 @@ namespace Wordle
 
                 if (guessAttemptsRemaining == 0)
                 {
-                    //wordleBoard[useWordleBoardRow] = $"{outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}";
-
-                    //foreach (string row in wordleBoard)
-                    //{
-                    //    Console.WriteLine($"{row,28}");
-                    //}
-
-                    //Console.WriteLine("");
-                    //Console.WriteLine($"Letter Board: {letterBoardRow1}");
-                    //Console.WriteLine($" {letterBoardRow2,31}");
-                    //Console.WriteLine($" {letterBoardRow3,28}");
-                    //Console.WriteLine("");
                     Console.WriteLine($"\"You have 0 guesses remaining. The wordle was \"{wordleWord.ToUpper()}\".Thank you for playing. Good Bye!\"");
                     return;
                 }
@@ -233,40 +155,6 @@ namespace Wordle
                             displayWordleBoard(wordleWord, wordleRow);
                         }
                     }
-
-                    //if ((userInputValidationPassed) && (wordleListValidationPassed))
-                    //{
-                    //    Console.WriteLine($"Guess Attempt(s) Remaining: {guessAttemptsRemaining}");
-                    //    //wordleBoard[useWordleBoardRow] = $"{outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}";
-                    //    //useWordleBoardRow++;
-
-                    //    //foreach (string row in wordleBoard)
-                    //    //{
-                    //    //    Console.WriteLine($"{row,28}");
-                    //    //}
-
-                    //    //Console.WriteLine("");
-                    //    //Console.WriteLine($"Letter Board: {letterBoardRow1}");
-                    //    //Console.WriteLine($" {letterBoardRow2,31}");
-                    //    //Console.WriteLine($" {letterBoardRow3,28}");
-                    //    //Console.WriteLine("");
-                    //}
-                    //else
-                    //{
-                    //    Console.WriteLine($"Guess Attempt(s) Remaining: {guessAttemptsRemaining}");
-                    //    //wordleBoard[useWordleBoardRow] = $"{outputCharOneDisplay} {outputCharTwoDisplay} {outputCharThreeDisplay} {outputCharFourDisplay} {outputCharFiveDisplay}";
-
-                    //    //foreach (string row in wordleBoard)
-                    //    //{
-                    //    //    Console.WriteLine($"{row,28}");
-                    //    //}
-
-                    //    //Console.WriteLine("");
-                    //    //Console.WriteLine($"Letter Board: {letterBoardRow1}");
-                    //    //Console.WriteLine($" {letterBoardRow2,31}");
-                    //    //Console.WriteLine($" {letterBoardRow3,28}");
-                    //    //Console.WriteLine("");
-                    //}
                 }
             } while (guessAgain);
         }
@@ -305,14 +193,6 @@ namespace Wordle
             "_ _ _ _ _",
             "_ _ _ _ _"
         };
-
-        public string letterBoard(string letterBoard, string incorrectLetterBoardCharOne, string incorrectLetterBoardCharTwo, string incorrectLetterBoardCharThree, string incorrectLetterBoardCharFour, string incorrectLetterBoardCharFive)
-        {
-            letterBoard = letterBoard.ToLower();
-            letterBoard = letterBoard.Replace(System.Convert.ToChar(incorrectLetterBoardCharOne), ' ').Replace(System.Convert.ToChar(incorrectLetterBoardCharTwo), ' ').Replace(System.Convert.ToChar(incorrectLetterBoardCharThree), ' ').Replace(System.Convert.ToChar(incorrectLetterBoardCharFour), ' ').Replace(System.Convert.ToChar(incorrectLetterBoardCharFive), ' ');
-            letterBoard = letterBoard.ToUpper();
-            return letterBoard;
-        }
 
         private void displayWordleBoard(string wordleWord, string userGuess)
         {
