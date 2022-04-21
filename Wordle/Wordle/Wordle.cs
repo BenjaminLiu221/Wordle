@@ -16,7 +16,7 @@ namespace Wordle
             int randomNumber = (int)randomizer.Next(0, 10);
 
             var wordleWord = WordleClass.GetWordle()[randomNumber].Word;
-            //Console.WriteLine($"Wordle is:{wordleWord}");
+            Console.WriteLine($"Wordle is:{wordleWord}");
 
             var wordleWordCharOne = wordleWord.ToCharArray()[0];
             var wordleWordCharTwo = wordleWord.ToCharArray()[1];
@@ -64,7 +64,7 @@ namespace Wordle
 
                 bool userInputValidationPassed = true;
 
-                bool wordleListValidationPassed = WordleClass.wordleList.Contains(userGuess);
+                bool wordleListValidationPassed = WordleClass.wordleList.Contains(userGuess); ;
 
                 if (userGuess.Equals("quit"))
                 {
