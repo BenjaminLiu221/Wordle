@@ -18,5 +18,5 @@ Game ends when user guesses the Wordle, quits the game, or runs out of guess att
    - ie. Visual Studio 2022
 - WordleList
    - Create a text file that has only five letter words each line
-   - Update string **wordle_Library_File_Path** to directory\textfilename.txt*
+   - Update string **wordle_Library_File_Path** to *directory\textfilename.txt*
 - Enjoy!
