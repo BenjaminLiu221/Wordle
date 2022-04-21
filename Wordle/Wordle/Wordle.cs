@@ -13,7 +13,7 @@ namespace Wordle
         {
             Random randomizer = new Random();
 
-            int randomNumber = (int)randomizer.Next(0, 10);
+            int randomNumber = (int)randomizer.Next(0, 1000);
 
             var wordleWord = WordleClass.GetWordle()[randomNumber].Word;
             //Console.WriteLine($"Wordle is:{wordleWord}");
