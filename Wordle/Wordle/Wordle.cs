@@ -18,9 +18,14 @@ namespace Wordle
             var wordleWord = WordleClass.GetWordle()[randomNumber].Word;
             Console.WriteLine($"Wordle is:{wordleWord}");
 
-            string letterBoardRow1 = "Q W E R T Y U I O P";
-            string letterBoardRow2 = "A S D F G H J K L";
-            string letterBoardRow3 = "Z X C V B N M";
+            var letterBoard = new Dictionary<char, string>();
+
+            var letterBoardStr = "QWERTYUIOPASDFGHJKLZXCVBNM";
+
+            foreach(char letter in letterBoardStr)
+            {
+                letterBoard.Add(letter, "black");
+            }
             
             string outputDisplayPadding = "";
 
@@ -28,15 +33,12 @@ namespace Wordle
             {
                 Console.WriteLine($"{row,28}");
             }
-
             Console.WriteLine("");
-            Console.WriteLine($"Letter Board: {letterBoardRow1}");
-            Console.WriteLine($" {letterBoardRow2,31}");
-            Console.WriteLine($" {letterBoardRow3,28}");
+
+            displayLetterBoard(letterBoard, outputDisplayPadding);
 
             Console.WriteLine("");
             Console.WriteLine("Enter 'Quit' to exit the game.");
-            Console.WriteLine("");
 
             bool guessAgain = true;
 
@@ -45,6 +47,7 @@ namespace Wordle
 
             do
             {
+                Console.WriteLine("");
                 Console.Write("Guess here: ");
                 string userGuess = Console.ReadLine().ToLower();
 
@@ -98,13 +101,14 @@ namespace Wordle
                 {
                     if (wordleListValidationPassed)
                     {
-
                         if (userGuess != wordleWord)
                         {
                             guessAttemptsRemaining--;
 
                             wordleBoard[useWordleBoardRow] = userGuess;
                             useWordleBoardRow++;
+
+                            updateLetterBoard(letterBoard, wordleWord, userGuess);
                         }
                         else
                         {
@@ -124,6 +128,11 @@ namespace Wordle
                                 }
                             }
 
+                            updateLetterBoard(letterBoard, wordleWord, userGuess);
+
+                            displayLetterBoard(letterBoard, outputDisplayPadding);
+
+                            Console.WriteLine("");
                             Console.WriteLine("\"You have guessed the Wordle. Thank you for playing!\"");
                             return;
                         }
@@ -136,6 +145,7 @@ namespace Wordle
 
                 if (guessAttemptsRemaining == 0)
                 {
+                    displayLetterBoard(letterBoard, outputDisplayPadding);
                     Console.WriteLine($"\"You have 0 guesses remaining. The wordle was \"{wordleWord.ToUpper()}\".Thank you for playing. Good Bye!\"");
                     return;
                 }
@@ -155,6 +165,8 @@ namespace Wordle
                             displayWordleBoard(wordleWord, wordleRow);
                         }
                     }
+
+                    displayLetterBoard(letterBoard, outputDisplayPadding);
                 }
             } while (guessAgain);
         }
@@ -194,29 +206,118 @@ namespace Wordle
             "_ _ _ _ _"
         };
 
-        private void displayWordleBoard(string wordleWord, string userGuess)
+        private void displayWordleBoard(string _wordleWord, string _userGuess)
         {
-            for (int i = 0; i < userGuess.Length; i++)
+            _wordleWord = _wordleWord.ToUpper();
+            _userGuess = _userGuess.ToUpper();
+            for (int i = 0; i < _userGuess.Length; i++)
             {
-                if (wordleWord.Contains(userGuess[i]))
+                if (_wordleWord.Contains(_userGuess[i]))
                 {
-                    if (wordleWord[i] == userGuess[i])
+                    if (_wordleWord[i] == _userGuess[i])
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write($"{userGuess[i]} ");
+                        Console.Write($"{_userGuess[i]} ");
                         Console.ResetColor();
                     }
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.Write($"{userGuess[i]} ");
+                        Console.Write($"{_userGuess[i]} ");
                         Console.ResetColor();
                     }
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write($"{userGuess[i]} ");
+                    Console.Write($"{_userGuess[i]} ");
+                    Console.ResetColor();
+                }
+            }
+            Console.WriteLine("");
+        }
+
+        private void updateLetterBoard(Dictionary<char, string> _letterBoard, string _wordleWord, string _userGuess)
+        {
+            _wordleWord = _wordleWord.ToUpper();
+            _userGuess = _userGuess.ToUpper();
+            for (int i = 0; i < _userGuess.Length; i++)
+            {
+                if (_wordleWord.Contains(_userGuess[i]))
+                {
+                    if (_wordleWord[i] == _userGuess[i])
+                    {
+                        _letterBoard[_userGuess[i]] = "green";
+                    }
+                    else
+                    {
+                        _letterBoard[_userGuess[i]] = "yellow";
+                    }
+                }
+                else
+                {
+                    _letterBoard[_userGuess[i]] = "gray";
+                }
+            }
+            Console.WriteLine("");
+        }
+
+        private void displayLetterBoard(Dictionary<char, string> _letterBoard, string _outputDisplayPadding)
+        {
+            Console.Write($"{_outputDisplayPadding,14}");
+            foreach (var row in _letterBoard)
+            {
+                if (row.Key.Equals("P".ToCharArray()[0]))
+                {
+                    if (row.Value.Equals("gray"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                    }
+                    else if (row.Value.Equals("green"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    }
+                    else if (row.Value.Equals("yellow"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                    }
+                    Console.WriteLine($"{row.Key} ");
+                    Console.ResetColor();
+                    Console.Write($"{_outputDisplayPadding,15}");
+                }
+                else if (row.Key.Equals("L".ToCharArray()[0]))
+                {
+                    if (row.Value.Equals("gray"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                    }
+                    else if (row.Value.Equals("green"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    }
+                    else if (row.Value.Equals("yellow"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                    }
+                    Console.WriteLine($"{row.Key} ");
+                    Console.ResetColor();
+                    Console.Write($"{_outputDisplayPadding,16}");
+                }
+                else
+                {
+                    if (row.Value.Equals("gray"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                    }
+                    else if (row.Value.Equals("green"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    }
+                    else if (row.Value.Equals("yellow"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                    }
+                    Console.Write($"{row.Key} ");
                     Console.ResetColor();
                 }
             }
