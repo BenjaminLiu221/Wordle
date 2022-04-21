@@ -16,7 +16,7 @@ namespace Wordle
             int randomNumber = (int)randomizer.Next(0, 10);
 
             var wordleWord = WordleClass.GetWordle()[randomNumber].Word;
-            Console.WriteLine($"Wordle is:{wordleWord}");
+            //Console.WriteLine($"Wordle is:{wordleWord}");
 
             var letterBoard = new Dictionary<char, string>();
 
@@ -229,7 +229,7 @@ namespace Wordle
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write($"{_userGuess[i]} ");
                     Console.ResetColor();
                 }
@@ -256,7 +256,7 @@ namespace Wordle
                 }
                 else
                 {
-                    _letterBoard[_userGuess[i]] = "gray";
+                    _letterBoard[_userGuess[i]] = "red";
                 }
             }
             Console.WriteLine("");
@@ -269,9 +269,9 @@ namespace Wordle
             {
                 if (row.Key.Equals("P".ToCharArray()[0]))
                 {
-                    if (row.Value.Equals("gray"))
+                    if (row.Value.Equals("red"))
                     {
-                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.ForegroundColor = ConsoleColor.Red;
                     }
                     else if (row.Value.Equals("green"))
                     {
@@ -287,9 +287,9 @@ namespace Wordle
                 }
                 else if (row.Key.Equals("L".ToCharArray()[0]))
                 {
-                    if (row.Value.Equals("gray"))
+                    if (row.Value.Equals("red"))
                     {
-                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.ForegroundColor = ConsoleColor.Red;
                     }
                     else if (row.Value.Equals("green"))
                     {
@@ -305,9 +305,9 @@ namespace Wordle
                 }
                 else
                 {
-                    if (row.Value.Equals("gray"))
+                    if (row.Value.Equals("red"))
                     {
-                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.ForegroundColor = ConsoleColor.Red;
                     }
                     else if (row.Value.Equals("green"))
                     {
