@@ -51,6 +51,8 @@ namespace Wordle
                 Console.Write("Guess here: ");
                 string userGuess = Console.ReadLine().ToLower();
 
+                //Console.Clear();
+
                 int userGuessLength = userGuess.Length;
 
                 int containInvalidCharCount = 0;
