@@ -12,11 +12,13 @@ Game ends when user guesses the Wordle, quits the game, or runs out of guess att
 - Tracks progress of Wordle through color scheme of letters if userInput is a word in the word list
 - Letter Board updates dynamically through color scheme of letters
 
+## Prerequisites
+
+- Basic knowledge of C#
+- Visual Studio 2022
+
 ## To Get Started
 
-- IDE that allows for multiple items to each project
-   - ie. Visual Studio 2022
 - WordleList
    - Create a text file that has only five letter words each line
    - Update string **wordle_Library_File_Path** to *directory\textfilename.txt*
-- Enjoy!
